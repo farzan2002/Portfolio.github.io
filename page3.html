@@ -1,0 +1,179 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Farzan's portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Header -->
+					<header id="header">
+						<a></a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li ><a href="index.html">Home Page</a></li>
+							<li class="active"><a>ML Project</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/farzan-bulsara/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://github.com/farzan2002" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Featured Post -->
+							<article class="post featured">
+								<header class="major">
+									<h2><a href="https://github.com/farzan2002/Machine_Learning_Project/blob/main/Project%202%5DDiabetes_Prediciton_Model.ipynb">ML Project - Diabetes Prediction Model (Python)<br />
+									</a></h2>
+									<p>Utilizing SVM, this project predicts diabetes with 77.27% accuracy following data preprocessing, showcasing its potential in healthcare analytics.</p>
+								</header>
+								<a class="image main"><img src="images/pic03.jpg" alt="" /></a>
+								<ul class="actions special">
+									<li><a href="https://github.com/farzan2002/Machine_Learning_Project/blob/main/Project%202%5DDiabetes_Prediciton_Model.ipynb" class="button large">Github Link</a></li>
+								</ul>
+							</article>
+
+                            <section>
+                                <h2>project explanation</h2>
+								<style>
+									/* Default styles for the iframe */
+									iframe {
+									  height: 600px; /* Set a fixed height */
+									  width: 100%;  /* Take up the full available width */
+									  overflow-x: auto; /* Add horizontal scroll when content overflows */
+									}
+								  
+									/* Apply different styles for smaller screens */
+									@media (max-width: 768px) {
+									  iframe {
+										height: 400px; /* Adjust the height for smaller screens */
+									  }
+									}
+								  </style>
+								  
+								  <iframe src="external\p3_sc.html"></iframe>
+								</br>
+								<p></br>
+									Below is the explaination for the the Machine Learning Project shown above:
+								</p>
+
+								<p></br>
+									<b>Step 1: Importing Libraries :</b><br>
+									In this step, you import the necessary Python libraries for data manipulation, machine learning, and evaluation.<br><br>
+
+									<b>Step 2: Loading the Dataset :</b><br>
+									You load a diabetes dataset into a Pandas DataFrame. The dataset is assumed to be located at the specified file path.<br><br>
+
+									<b>Step 3: Exploring the Dataset :</b><br>
+									This step involves examining the dataset to understand its structure and contents.<br>
+										- Displaying the first 5 rows of the dataset:<br>
+										<code>diabetes_data.head()</code><br>
+										- Checking the shape of the dataset :<br>
+										<code>diabetes_data.shape</code><br>
+										- Viewing the statistical values of the dataset :<br>
+										<code>diabetes_data.describe()</code><br>
+										- Counting the number of diabetic and non-diabetic patients :<br>
+										<code>diabetes_data['Outcome'].value_counts()</code><br>
+                                        - Mean values of the dataset grouped by the 'Outcome' column :<br>
+                                        <code>diabetes_data.groupby('Outcome').mean()</code><br><br>
+
+									<b>Step 4: Separating Data and Labels :</b><br>
+									You split the data into features (X) and the target variable (Y).<br><br>
+
+									<b>Step 5: Data Standardization :</b><br>
+									You standardize the feature data using 'StandardScaler' to ensure all features have the same scale.<br><br>
+									
+									<b>Step 6: Train-Test Split :</b><br>
+									You split the standardized data into training and testing sets.<br><br>
+
+									<b>Step 7: Training the Model : </b><br>
+									You train a Support Vector Machine (SVM) classifier with a linear kernel using the training data.<br><br>
+								
+									<b>Step 8: Evaluating the Model : </b><br>
+									In this step, you evaluate the trained model's accuracy using both the training and testing data.<br>
+                                        - Accuracy score of the model on training data :<br>
+                                        <code>X_train_predict = classifier.predict(X_train)
+                                            training_data_accuracy = accuracy_score(X_train_predict, Y_train)</code><br>
+                                        - Accuracy score of the model on testing data :<br>
+                                        <code>X_test_predict = classifier.predict(X_test)
+                                            testing_data_accuracy = accuracy_score(X_test_predict, Y_test)</code><br><br>
+								
+									<b>Step 9: Prediction System :</b><br>
+									You create a simple system to make predictions based on user input.<br>
+                                        - Take user input as a comma-separated list of numbers and convert it to a standardized format :<br>
+                                        <code>  input_str = input("Enter a comma-separated list of numbers: ")<br>
+                                                input_list = input_str.split(',')<br>
+                                                input_data = [float(item) for item in input_list]<br>
+                                                input_data_np = np.asarray(input_data)<br>
+                                                input_data_reshaped = input_data_np.reshape(1, -1)<br>
+                                                standard_data = scaler.transform(input_data_reshaped)</code><br>
+                                        - Make predictions based on the input data :<br>
+                                        <code>  prediction = classifier.predict(standard_data)<br>
+                                                if prediction == 0:<br>
+                                                    print("Non-diabetic")<br>
+                                                else:<br>
+                                                    print("Diabetic")</code><br>
+                                        - The system predicts whether the input data represents a diabetic or non-diabetic patient.
+								</p>
+
+
+							</section>							
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section class="split contact">
+							<section class="alt">
+								<h3>Address</h3>
+								<p>Goregaon East<br />
+								Mumbai 400063, MH IN</p>
+							</section>
+							<section>
+								<h3>Phone</h3>
+								<p><a>+91 8104699848</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="https://mail.google.com">farzanb102@gmail.com</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="https://www.linkedin.com/in/farzan-bulsara/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://github.com/farzan2002" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li></li><li> <a> </a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
