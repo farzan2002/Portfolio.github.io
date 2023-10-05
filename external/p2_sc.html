@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Project_1]_Credit_Card_Fraud</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>p2_sc</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -36,6 +36,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 .highlight .m { color: var(--jp-mirror-editor-number-color) } /* Literal.Number */
 .highlight .s { color: var(--jp-mirror-editor-string-color) } /* Literal.String */
 .highlight .ow { color: var(--jp-mirror-editor-operator-color); font-weight: bold } /* Operator.Word */
+.highlight .pm { color: var(--jp-mirror-editor-punctuation-color) } /* Punctuation.Marker */
 .highlight .w { color: var(--jp-mirror-editor-variable-color) } /* Text.Whitespace */
 .highlight .mb { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Bin */
 .highlight .mf { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Float */
@@ -14572,7 +14573,18 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     </script>
     <!-- End of mathjax configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Importing-Libraries"><strong>Importing Libraries</strong><a class="anchor-link" href="#Importing-Libraries">&#182;</a></h1>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -16141,8 +16153,7 @@ Name: Amount, dtype: float64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Building a sample dataset from the original dataset to make it more balanced.</p>
-
+<h2 id="Building-a-sample-dataset-from-the-original-dataset-to-make-it-more-balanced."><strong>Building a sample dataset from the original dataset to make it more balanced.</strong><a class="anchor-link" href="#Building-a-sample-dataset-from-the-original-dataset-to-make-it-more-balanced.">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -16598,8 +16609,7 @@ Name: Class, dtype: int64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Splitting the data into features &amp; targets</p>
-
+<h1 id="Splitting-the-data-into-features-&amp;-targets"><strong>Splitting the data into features &amp; targets</strong><a class="anchor-link" href="#Splitting-the-data-into-features-&amp;-targets">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -16627,8 +16637,7 @@ Name: Class, dtype: int64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Split the data into Training and Testing data</p>
-
+<h1 id="Split-the-data-into-Training-and-Testing-data"><strong>Split the data into Training and Testing data</strong><a class="anchor-link" href="#Split-the-data-into-Training-and-Testing-data">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -16696,9 +16705,7 @@ Name: Class, dtype: int64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Training the model</p>
-<p>LOGISTIC REGRESSION</p>
-
+<h1 id="Training-the-model"><strong>Training the model</strong><a class="anchor-link" href="#Training-the-model">&#182;</a></h1><h1 id="LOGISTIC-REGRESSION"><strong>LOGISTIC REGRESSION</strong><a class="anchor-link" href="#LOGISTIC-REGRESSION">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -16767,8 +16774,7 @@ Name: Class, dtype: int64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Model Evaluation</p>
-
+<h1 id="Model-Evaluation"><strong>Model Evaluation</strong><a class="anchor-link" href="#Model-Evaluation">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -16918,22 +16924,6 @@ Name: Class, dtype: int64</pre>
 
 </div>
 
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-python"><pre><span></span>
-</pre></div>
-
-     </div>
-</div>
-</div>
 </div>
 
 </div>
