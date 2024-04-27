@@ -1,0 +1,262 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Farzan's portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/styles.css"> <!-- Link to external CSS file -->
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Header -->
+					<header id="header">
+						<a></a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li ><a href="index.html">Home Page</a></li>
+							<li class="active"><a>ML Project</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/farzan-bulsara/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://github.com/farzan2002" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Featured Post -->
+							<article class="post featured">
+								<header class="major">
+									<h2><a href="https://github.com/farzan2002/Machine_Learning_Project/blob/main/Project%201%5D%20_Credit_Card_Fraud.ipynb">ML Project - Loan Status Prediction (Python)<br />
+									</a></h2>
+									<p>This project utilizes Support Vector Machine (SVM) classification to predict loan approval status with an accuracy of 83.33% on testing data, following thorough data exploration, preprocessing, and model evaluation.</p>
+								</header>
+								<a class="image main"><img src="images/pic11.jpg" alt="" /></a>
+								<ul class="actions special">
+									<li><a href="https://github.com/farzan2002/Machine_Learning_Project/blob/main/Project%201%5D%20_Credit_Card_Fraud.ipynb" class="button large">Github Link</a></li>
+								</ul>
+							</article>
+
+                            <section>
+                                <h2>project explanation</h2>
+								<style>
+									/* Default styles for the iframe */
+									iframe {
+									  height: 600px; /* Set a fixed height */
+									  width: 100%;  /* Take up the full available width */
+									  overflow-x: auto; /* Add horizontal scroll when content overflows */
+									  border: 2px solid #ccc;
+									}
+								  
+									/* Apply different styles for smaller screens */
+									@media (max-width: 768px) {
+									  iframe {
+										height: 400px; /* Adjust the height for smaller screens */
+									  }
+									}
+								  </style>
+								  
+								  <iframe src="external\p9_sc.html"></iframe>
+								</br>
+								<p></br>
+									Below is the explaination for the the Machine Learning Project shown above:
+								</p>
+
+								<p></br>
+									<b>Step 1: Importing Libraries :</b><br>
+									We begin by importing essential libraries such as Pandas, NumPy, Plotly, and Scikit-learn. These libraries are crucial for data manipulation, visualization, and machine learning tasks.<br><br>
+
+									<b>Step 2: Loading & Exploring the Dataset :</b><br>
+									We load a loan status dataset into a Pandas DataFrame. The dataset is assumed to be located at the specified file path.<br><br>
+
+									<b>Step 3: Exploring the Dataset :</b><br>
+									This step involves examining the dataset to understand its structure and contents.<br>
+										- Displaying the first 5 rows of the dataset:<br>
+										<code>loan_dataset.head(5)</code><br><br>
+										- Getting information about the dataset, including data types and null values:<br>
+										<code>loan_dataset.info()</code><br><br>
+										- Printing the Number of Rows & Columns of the DataFrame:<br>
+										<code>loan_dataset.shape</code><br><br>
+										- Printing the Statistical Values of the DataFrame:<br>
+										<code>loan_dataset.describe()</code><br><br>
+										- Checking for the count of null values in each column:<br>
+										<code>loan_dataset.isnull().sum()</code><br><br>
+
+									<b>Step 4: Data Visualization :</b><br>
+									We use Plotly Express to create various plots for visualizing the distribution of loans across different categorical variables such as marital status, education, gender, and loan amount. These visualizations provide insights into the data distribution and relationships between variables.<br><br>
+
+									<b>Step 5: Data Preprocessing for Modeling :</b><br>
+									We preprocess the data to prepare it for modeling. This involves label encoding categorical variables, replacing categorical values with numerical equivalents to make them suitable for machine learning algorithms.<br><br>
+
+									<b>Step 6: Splitting the Data into Features and Targets :</b><br>
+									We separate the features (independent variables) and the target variable (dependent variable) from the dataset. The features are the input variables used to predict the target variable, which is the loan approval status in this case.<br><br>
+
+									<b>Step 7: Splitting the Data into Training and Testing Sets : </b><br>
+									We split the data into training and testing sets using the <code>train_test_split()</code> function. This allows us to train the machine learning model on a portion of the data and evaluate its performance on unseen data.<br><br>
+								
+									<b>Step 8: Training the Model : </b><br>
+									We instantiate a Support Vector Machine (SVM) classifier with a linear kernel and train it using the training data. SVM is a popular machine learning algorithm used for classification tasks.<br><br>
+								
+									<b>Step 9: Model Evaluation :</b><br>
+									We evaluate the trained model's performance on both the training and testing datasets using accuracy scores. Accuracy score measures the percentage of correctly predicted instances.<br><br>
+								
+									<b>Step 10: Saving the Model :</b><br>
+									We save the trained SVM model using the <code>pickle</code> module. This allows us to reuse the model without having to retrain it every time.<br><br>
+									
+									<b>Step 11: Loading the Saved Model :</b><br>
+									Finally, this step demonstrates how to load the saved model back into memory. This step ensures that the trained model can be easily accessed and used for making predictions on new data.<br><br>
+
+								</p><br>
+
+								<section>
+									<h2>Model Deployment</h2>
+									<p>Below is a Python script used in this project along with an explanation:</p>
+										<div class="code-block">
+											<h3>Script 1 : Model_Deploy.py</h3>
+											<p></p>
+											<code>
+												<pre>
+	import numpy as np
+	import pickle
+	import streamlit as st
+	
+	loaded_model = pickle.load(open("C:/Users/farza/Downloads/trained_model.sav", 'rb'))
+	
+	def loan_prediction(input_data):
+		
+		
+		input_data_np = np.asarray(input_data)
+	
+		# reshaping the array
+	
+		input_data_reshaped = input_data_np.reshape(1,-1)
+	
+		# Standardizing the input data
+	
+		prediction = loaded_model.predict(input_data_reshaped)
+	
+	
+		print("Outcome : ",prediction)
+	
+		if prediction == 0:
+			return "Eligible for Loan"
+		else:
+			return "Not Eligible for Loan"
+		
+	def main():
+	
+		st.title('Loan Prediction')
+	
+		Gender = st.text_input('Gender')
+		Married	= st.text_input('Marital Status')
+		Dependents	= st.text_input('Number of Dependents')
+		Education = st.text_input('Graduation')
+		Self_Employed = st.text_input('Are you Self Employed?')
+		ApplicantIncome = st.text_input('Income of the Applicant')
+		CoapplicantIncome = st.text_input('Income of the Co-Applicant')
+		LoanAmount = st.text_input('Amount of Loan')
+		Loan_Amount_Term = st.text_input('Term of the Loan')	
+		Credit_History = st.text_input('Credit History')
+		Property_Area = st.text_input('Area')
+		
+		Loan = ''
+	
+		if st.button('Result'):
+			Loan = loan_prediction([Gender,Married,Dependents,Education,Self_Employed,ApplicantIncome,CoapplicantIncome,LoanAmount,Loan_Amount_Term,Credit_History,Property_Area])
+		
+		st.success(Loan)
+	
+	if __name__ == '__main__':
+		main()
+	
+												</pre>
+											</code>
+										</div><br>
+									<p>
+										<b>Step 1: Imports :</b><br>
+										We import necessary libraries, including numpy for numerical operations, pickle for loading the saved model, and streamlit for building the web application.<br><br>
+	
+										<b>Step 2: Loading the Saved Model :</b><br>
+										We load the pre-trained model using pickle.load. Ensure that the path to the 'trained_model.sav' file is correct on your system.<br><br>	
+										
+										<b>Step 3: "loan_prediction" Function :</b><br>
+										- This function takes an input list of data representing features related to loan status prediction.<br>
+										- It converts the input data into a numpy array, reshapes it, and uses the loaded model to make predictions.<br>
+										- Based on the prediction result, it returns 'Eligible for Loan' or 'Not Eligible for Loan'.<br><br>
+	
+										<b>Step 4: "main" Function :</b><br>
+										- In the main function, we create a Streamlit web application.<br>
+										- We provide input fields for the user to enter information related to diabetes prediction, such as the number of gender, ApplicantIncome, CoapplicantIncome, and so on.<br>
+										- When the user clicks the "Result" button, the <code>loan_prediction()</code> function is called with the provided input data, and the prediction is displayed.<br><br>
+	
+										<b>Step 5: Running the Streamlit App :</b><br>
+										We use the <code>if __name__ == '__main__':</code> block to run the Streamlit app when the script is executed directly.<br><br>
+	
+										<b>Step 6: Displaying the Diagnosis :</b><br>
+										The diagnosis result ('Eligible for Loan' or 'Not Eligible for Loan') is displayed using st.success.<br>
+	
+									</p>
+	                                <h2>Web Page Output </h2>
+									<img src="images/ml_d9.png" alt="" class="responsive-image" /><br><br>
+	
+	
+									</section>
+
+
+							</section>							
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section class="split contact">
+							<section class="alt">
+								<h3>Address</h3>
+								<p>Goregaon East<br />
+								Mumbai 400063, MH IN</p>
+							</section>
+							<section>
+								<h3>Phone</h3>
+								<p><a>+91 8104699848</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="https://mail.google.com">farzanb102@gmail.com</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="https://www.linkedin.com/in/farzan-bulsara/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://github.com/farzan2002" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li></li><li> <a> </a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
