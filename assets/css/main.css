@@ -4693,3 +4693,69 @@ input, select, textarea {
 	max-width: 100%; /* Set the maximum width to 100% of its parent container */
 	height: auto; /* Allow the height to adjust proportionally with the width */
   }
+
+
+
+
+
+
+
+
+
+
+  
+  .post-container {
+    display: flex; /* Flex container for articles */
+    flex-wrap: wrap; /* Allow wrapping */
+    width: 100%; /* Full width for the container */
+    margin: 0; /* No margin on posts container */
+    padding: 0; /* No padding on posts container */
+}
+
+article {
+    flex: 0 0 50%; /* Each article takes 50% of the width (2 per row) */
+    padding: 20px; /* Padding inside the article */
+    box-sizing: border-box; /* Ensures padding doesn't affect size */
+    border: 1px solid #ccc; /* Border for the article */
+    display: flex; /* Use flexbox for the article */
+    flex-direction: column; /* Stack items vertically */
+}
+
+/* Ensuring no right border for the last article in each row */
+article:last-child {
+    border-right: none; /* Remove right border for last article */
+}
+
+/* Optional: Adding a bottom border for visual separation of rows */
+.post-container {
+    border-bottom: 1px solid #ccc; /* Bottom border for visual separation of rows */
+}
+
+.content {
+    display: flex; /* Flex container for content */
+    flex-direction: column; /* Stack items vertically */
+    flex: 1; /* Make content take remaining space */
+}
+
+header {
+    margin-bottom: 10px; /* Space between header and image */
+}
+
+.image.fit {
+    margin-bottom: 10px; /* Space between image and paragraph */
+    max-width: 100%; /* Ensure the image doesn't exceed container width */
+}
+
+.actions {
+    margin-top: auto; /* Push the button to the bottom */
+    text-align: center; /* Center align the button */
+}
+
+/* Ensure proper layout on smaller screens */
+@media screen and (max-width: 736px) {
+    article {
+        flex: 0 0 100%; /* Take full width on small screens */
+    }
+}
+
+
