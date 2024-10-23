@@ -1,0 +1,391 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Farzan's portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/styles.css"> <!-- Link to external CSS file -->
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Header -->
+					<header id="header">
+						<a></a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li ><a href="index2.html">❮ Go Back</a></li>
+							<li class="active"><a>SQL Project</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/farzan-bulsara/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://github.com/farzan2002" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Featured Post -->
+							<article class="post featured">
+								<header class="major">
+									<h2><a href="https://github.com/farzan2002/SQL_PROJECTS/tree/main/DATA%20CLEANING">Data Cleaning on Housing Data (SQL)<br />
+									</a></h2>
+									<p>SQL project: Cleaned 'housing' data, including type conversion, null handling, splitting, abbreviation updates, duplicates removal, and unused columns deletion.</p>
+								</header>
+								<a class="image main"><img src="images/Preview_img/pic10.jpg" alt="" /></a>
+								<ul class="actions special">
+									<li><a href="https://github.com/farzan2002/SQL_PROJECTS/tree/main/DATA%20CLEANING" class="button large">Github Link</a></li>
+								</ul>
+							</article>
+
+                            <section>
+                                <h2>Data Cleaning Using SQL</h2>
+                                <p>In the rapidly evolving landscape of data-driven decision-making, the foundation of any insightful analysis rests on the quality of the underlying data. Raw data, often heterogeneous and messy, 
+                                requires meticulous refinement to unveil the valuable insights hidden within. 
+                                One remarkable endeavor in this realm is the art of data cleaning – a process that goes beyond the mundane task of removing anomalies. 
+                                It's a transformative journey that involves unraveling complexity, taming inconsistencies, and molding raw information into a coherent and reliable foundation for analysis.
+                                </p>
+
+                                <h3>SQL Commands Used in This Project:</h3>
+                                <p>
+                                    <b>Functions:</b> <br> 
+                                    -  MIN │ ISNULL │ SUBSTRING │ REPLACE │ CHARINDEX  │ LEN │ PARSENAME<br>
+                                    <b>Operators: </b> <br>
+                                    - AND │ASC │ DESC<br>
+                                    <b>Clauses: </b><br>
+                                    - AS │ WHERE │ GROUP BY │ HAVING │ ORDER BY │ DISTINCT  │ JOIN <br>
+                                    <b>Statements: </b><br>
+                                    - CASE │ WHEN │ THEN
+                                </p>
+
+                                <p>Data cleaning in SQL involves preparing and transforming raw data in a database to make it suitable for analysis, reporting, or other purposes. Here are some common data cleaning tasks you might perform using SQL :</p>
+
+                                <p><b><u>1] CONVERTING DATA TYPES :</b></u><br>
+                                    - A query to alter the data type of the 'SaleDate' column in the 'housing' table from DATETIME to DATE.</br>
+                                    - This type of query is crucial when you need to standardize the data type for a particular column, ensuring that the values match the desired format for better consistency and accuracy in analysis.</p>
+								<section>                <!-- Script 1 -->
+									<div class="code-block">
+									<h4>--1]CONVERTING THE DATA TYPE IN 'SaleDate' COLUMN FROM DATETIME TO DATE.</h4>
+									<p></p>
+										<code>
+											<pre>
+	ALTER TABLE housing
+	ALTER COLUMN SaleDate DATE;
+											</pre>
+										</code>
+									</div>
+								</section><br><br>
+								
+				
+								<p><b><u>2] POPULATING THE NULL VALUE FIELDS :</b></u><br>
+									- This query identifies rows in the 'housing' table where 'PropertyAddress' is NULL, and there are multiple rows with the same 'ParcelID' but different 'UniqueID'. 
+									It showcases situations where there might be multiple records for the same property, but only some of them have missing addresses.</p>
+								<section>                <!-- Script 2 -->
+									<div class="code-block">
+									<h4>
+									--2]POPULATING PROPERTY ADDRESS DATA.<br>
+									--SHOWCASES ALL THE NULL ROWS WHICH HAS SAME 'ParcelID' BUT DIFFERENT 'UniqueID' BETWEEN THE TWO COLUMNS.
+									</h4>
+									<p></p>
+										<code>
+											<pre>
+	SELECT a.ParcelID, a.PropertyAddress, b.ParcelID, b.PropertyAddress
+	FROM housing AS a 
+	join 
+	housing AS b 
+	ON
+		a.ParcelID = b.ParcelID
+		and a.[UniqueID ] <> b.[UniqueID 
+	WHERE 
+		a.PropertyAddress IS NULL;
+											</pre>
+										</code>
+									</div>
+								</section><br>
+
+                                <p>- This query updates the NULL 'PropertyAddress' values in the 'housing' table by using the non-NULL 'PropertyAddress' value from another row with the same 'ParcelID' but different 'UniqueID'. This way, you're essentially copying the address from another record for the same property.</p>
+								<section>                <!-- Script 3 -->
+									<div class="code-block">
+									<h4>--2]POPULATING PROPERTY ADDRESS DATA.<br>
+									--UPDATING THE NULL VALUES.</h4>
+									<p></p>
+										<code>
+											<pre>
+	UPDATE a
+	SET PropertyAddress = ISNULL(a.PropertyAddress,b.PropertyAddress)
+	FROM housing AS a 
+	join 
+	housing AS b
+	ON 
+		a.ParcelID = b.ParcelID
+		and a.[UniqueID ] <> b.[UniqueID ]
+	WHERE 
+		a.PropertyAddress is null;
+											</pre>
+										</code>
+									</div>
+								</section><br><br>								
+
+                                <p><b><u>3] SPLITTING VALUES (PropertyAddress) :</b></u><br>
+                                    - This query demonstrates how to split the values in the 'PropertyAddress' column into 'Address' and 'City' parts using the SUBSTRING function along with CHARINDEX and LEN.<br></p>
+									<section>                <!-- Script 4 -->
+										<div class="code-block">
+										<h4>--3]SPLITTING THE VALUES IN 'PropertyAddress' INTO ADDRESS, CITY.<br>
+										----SHOWCASING THE SPLIT VALUES</h4>
+										<p></p>
+											<code>
+												<pre>
+	SELECT  
+	SUBSTRING (PropertyAddress, 1, CHARINDEX(',', PropertyAddress) -1) AS Address,
+	SUBSTRING (PropertyAddress, CHARINDEX(',', PropertyAddress) +1, LEN(PropertyAddress)) AS City
+	FROM housing;
+												</pre>
+											</code>
+										</div>
+									</section><br>
+										
+
+                                <p>- These queries involve altering the 'housing' table by adding 'Prop_Address' and 'Prop_City' columns to store the split values. Then, the existing 'PropertyAddress' column is updated to fill the 'Prop_Address' column with the address part and the 'Prop_City' column with the city part.</p>
+                                <section>                <!-- Script 5 -->
+									<div class="code-block">
+									<h4>--3]SPLITTING THE VALUES IN 'PropertyAddress' INTO ADDRESS, CITY.<br>
+									----ADDING COLUMNS 'Address' & 'City' AND UPDATING THEM WITH THE SPLIT VALUES 
+									</h4>
+									<p></p>
+										<code>
+											<pre>
+	ALTER TABLE housing 
+	ADD
+		Prop_Address nvarchar(255);
+
+	UPDATE housing
+	SET
+		Prop_Address = SUBSTRING (PropertyAddress, 1, CHARINDEX(',', PropertyAddress) -1);
+
+
+	ALTER TABLE housing 
+	ADD
+		Prop_City nvarchar(255);
+
+	UPDATE housing
+	SET
+		Prop_City = SUBSTRING (PropertyAddress, CHARINDEX(',', PropertyAddress) +1, LEN(PropertyAddress));
+											</pre>
+										</code>
+									</div>
+								</section><br><br>
+
+                                <p><b><u>4] SPLITTING ADDRESS (OwnerAddress) :</b></u><br>
+                                    - This query demonstrates how to split the values in the 'OwnerAddress' column into 'Address', 'City', and 'State' parts using the PARSENAME function along with REPLACE. 
+                                    </p>
+									<section>                <!-- Script 6 -->
+										<div class="code-block">
+										<h4>--4]SPLITTING THE VALUES IN 'OwnerAddress' INTO ADDRESS, CITY, STATE.<br>
+											----SHOWCASING THE SPLIT VALUES.
+										</h4>
+										<p></p>
+											<code>
+												<pre>
+											SELECT 
+	PARSENAME(REPLACE(OwnerAddress,',','.'),3) AS Address,
+	PARSENAME(REPLACE(OwnerAddress,',','.'),2) AS City,
+	PARSENAME(REPLACE(OwnerAddress,',','.'),1) AS State
+	FROM housing;
+												</pre>
+											</code>
+										</div>
+									</section><br>
+                                
+								<p>- These queries involve altering the 'housing' table by adding 'Owner_Address', 'Owner_City', and 'Owner_State' columns to store the split values. Then, the existing 'OwnerAddress' column is updated to fill these new columns with the respective address, city, and state parts.</p>
+                                <section>                <!-- Script 7 -->
+									<div class="code-block">
+									<h4>--4]SPLITTING THE VALUES IN 'OwnerAddress' INTO ADDRESS, CITY, STATE.<br>
+										----ADDING COLUMNS 'Address', 'City' & 'State' AND UPDATING THEM WITH THE SPLIT VALUES.
+									</h4>
+									<p></p>
+										<code>
+											<pre>
+	ALTER TABLE housing 
+		ADD
+			Owner_Address nvarchar(255);
+
+	ALTER TABLE housing 
+		ADD
+			Owner_City nvarchar(255);
+
+	ALTER TABLE housing 
+		ADD
+			Owner_State nvarchar(255);
+
+	UPDATE housing
+		SET
+			Owner_Address =PARSENAME(REPLACE(OwnerAddress,',','.'),3);
+
+	UPDATE housing
+		SET
+			Owner_City = PARSENAME(REPLACE(OwnerAddress,',','.'),2);
+
+	UPDATE housing
+		SET
+			Owner_State = PARSENAME(REPLACE(OwnerAddress,',','.'),1);	
+											</pre>
+										</code>
+									</div>
+								</section><br><br>
+                                
+								<p><b><u>5]  UPDATING ABBREVIATIONS :</b></u><br>
+                                    - This query demonstrates how to transform the 'Y' and 'N' values in the 'SoldAsVacant' column into 'Yes' and 'No', respectively, using a CASE expression.</p>
+									<section>                <!-- Script 8 -->
+										<div class="code-block">
+										<h4>--5]UPDATE THE 'Y' & 'N' VALUES IN THE COLUMN "SoldAsVacant" TO 'YES' AND 'NO'.<br>
+											----SHOWCASING THE 'Y' & 'N' AS 'Yes' & 'No'.
+										</h4>
+										<p></p>
+											<code>
+												<pre>
+	SELECT SoldAsVacant,
+		CASE 
+			WHEN SoldAsVacant = 'Y' THEN 'Yes'
+			WHEN SoldAsVacant = 'N' THEN 'No'
+			ELSE SoldAsVacant
+		END
+	FROM housing;
+												</pre>
+											</code>
+										</div>
+									</section><br>
+
+                                <p>- This query involves updating the 'SoldAsVacant' values in the 'housing' table by using a CASE expression similar to the one shown in the first query. It changes 'Y' to 'Yes' and 'N' to 'No', leaving other values unchanged.</p>
+								<section>                <!-- Script 9 -->
+									<div class="code-block">
+									<h4>--5]UPDATE THE 'Y' & 'N' VALUES IN THE COLUMN "SoldAsVacant" TO 'YES' AND 'NO'.<br>
+										----UPDATING THE VALUES TO 'YES' & 'NO'.
+									</h4>
+									<p></p>
+										<code>
+											<pre>
+	UPDATE housing
+	SET SoldAsVacant = 
+		CASE 
+			WHEN SoldAsVacant = 'Y' THEN 'Yes'
+			WHEN SoldAsVacant = 'N' THEN 'No'
+			ELSE SoldAsVacant
+		END
+	FROM housing;
+											</pre>
+										</code>
+									</div>
+								</section><br><br>
+
+                                <p><b><u>6] REMOVING DUPLICATES :</b></u><br>
+                                    - This query identifies duplicate records in the 'housing' table based on the columns 'ParcelID', 'SaleDate', and 'LegalReference'. It counts the occurrences of each combination of these columns and showcases instances where there are multiple records with the same combination.</p>
+									<section>                <!-- Script 10 -->
+										<div class="code-block">
+										<h4>--6] REMOVING DUPLICATES.<br>
+											----SHOWCASING THE DUPLICATE VALUES.
+										</h4>
+										<p></p>
+											<code>
+												<pre>
+	SELECT ParcelID, SaleDate, LegalReference, COUNT(*) AS DuplicateCount
+	FROM housing
+	GROUP BY ParcelID, SaleDate, LegalReference
+	HAVING COUNT(*) > 1;
+												</pre>
+											</code>
+										</div>
+									</section><br>
+										
+                                <p>- This query involves removing duplicate records from the 'housing' table. It retains only the records with the minimum 'UniqueID' for each combination of 'ParcelID', 'SaleDate', and 'LegalReference'.</p>
+                                <section>                <!-- Script 11 -->
+									<div class="code-block">
+									<h4>--6] REMOVING DUPLICATES.<br>
+										----DELETING THE DUPLICATE VALUES.
+									</h4>
+									<p></p>
+										<code>
+											<pre>
+	DELETE FROM housing
+	WHERE [UniqueID ] NOT IN (
+		SELECT MIN([UniqueID ])
+		FROM housing
+		GROUP BY ParcelID, SaleDate, LegalReference
+	);
+											</pre>
+										</code>
+									</div>
+								</section><br><br>
+
+                                <p><b><u>7] REMOVING UNUSED COLUMNS :</b></u><br>
+                                    - This query is focused on deleting unused columns from the 'housing' table. The ALTER TABLE statement with the DROP COLUMN clause is used to remove specific columns from a table.</p>
+                                
+									<section>                <!-- Script 12 -->
+										<div class="code-block">
+										<h4>--7]DELETING UNUSED COLUMNS
+										</h4>
+										<p></p>
+											<code>
+												<pre>
+	ALTER TABLE housing
+	DROP COLUMN PropertyAddress,OwnerAddress,TaxDistrict;
+												</pre>
+											</code>
+										</div>
+									</section><br>
+
+                            </section>							
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section class="split contact">
+							<section class="alt">
+								<h3>Address</h3>
+								<p>Mumbai 400063, MH IN</p>
+							</section>
+							<section>
+								<h3>Phone</h3>
+								<p><a>+91 8104699848</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="https://mail.google.com">farzanb102@gmail.com</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="https://www.linkedin.com/in/farzan-bulsara/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://github.com/farzan2002" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li></li><li> <a> </a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/rightclick.js"></script>
+
+	</body>
+</html>

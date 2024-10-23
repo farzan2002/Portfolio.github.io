@@ -21,8 +21,8 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li ><a href="index.html">Home Page</a></li>
-							<li class="active"><a>SQL Project</a></li>
+							<li ><a href="index.html">❮ Go Back</a></li>
+							<li class="active"><a>ML Project</a></li>
 						</ul>
 						<ul class="icons">
 							<li><a href="https://www.linkedin.com/in/farzan-bulsara/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
@@ -36,312 +36,205 @@
 						<!-- Featured Post -->
 							<article class="post featured">
 								<header class="major">
-									<h2><a href="https://github.com/farzan2002/SQL_PROJECTS/tree/main/DATA%20CLEANING">Data Cleaning on Housing Data (SQL)<br />
+									<h2><a href="https://github.com/farzan2002/Machine_Learning_Project/blob/main/Project%202%5DDiabetes_Prediciton_Model.ipynb">ML Project - Diabetes Prediction Model (Python)<br />
 									</a></h2>
-									<p>SQL project: Cleaned 'housing' data, including type conversion, null handling, splitting, abbreviation updates, duplicates removal, and unused columns deletion.</p>
+									<p>Utilizing SVM, this project predicts diabetes with 77.27% accuracy following data preprocessing, showcasing its potential in healthcare analytics.</p>
 								</header>
-								<a class="image main"><img src="images/pic04.jpg" alt="" /></a>
+								<a class="image main"><img src="images/Preview_img/pic04.jpg" alt="" /></a>
 								<ul class="actions special">
-									<li><a href="https://github.com/farzan2002/SQL_PROJECTS/tree/main/DATA%20CLEANING" class="button large">Github Link</a></li>
+									<li><a href="https://github.com/farzan2002/Machine_Learning_Project/blob/main/Project%202%5DDiabetes_Prediciton_Model.ipynb" class="button large">Github Link</a></li>
 								</ul>
 							</article>
 
                             <section>
-                                <h2>Data Cleaning Using SQL</h2>
-                                <p>In the rapidly evolving landscape of data-driven decision-making, the foundation of any insightful analysis rests on the quality of the underlying data. Raw data, often heterogeneous and messy, 
-                                requires meticulous refinement to unveil the valuable insights hidden within. 
-                                One remarkable endeavor in this realm is the art of data cleaning – a process that goes beyond the mundane task of removing anomalies. 
-                                It's a transformative journey that involves unraveling complexity, taming inconsistencies, and molding raw information into a coherent and reliable foundation for analysis.
-                                </p>
+                                <h2>project explanation</h2>
+								<style>
+									/* Default styles for the iframe */
+									iframe {
+									  height: 600px; /* Set a fixed height */
+									  width: 100%;  /* Take up the full available width */
+									  overflow-x: auto; /* Add horizontal scroll when content overflows */
+									  border: 2px solid #ccc;
+									}
+								  
+									/* Apply different styles for smaller screens */
+									@media (max-width: 768px) {
+									  iframe {
+										height: 400px; /* Adjust the height for smaller screens */
+									  }
+									}
+								  </style>
+								  
+								  <iframe src="Source_Code\diabetes_sc.html"></iframe>
+								</br>
+								<p></br>
+									Below is the explaination for the the Machine Learning Project shown above:
+								</p>
 
-                                <h3>SQL Commands Used in This Project:</h3>
-                                <p>
-                                    <b>Functions:</b> <br> 
-                                    -  MIN │ ISNULL │ SUBSTRING │ REPLACE │ CHARINDEX  │ LEN │ PARSENAME<br>
-                                    <b>Operators: </b> <br>
-                                    - AND │ASC │ DESC<br>
-                                    <b>Clauses: </b><br>
-                                    - AS │ WHERE │ GROUP BY │ HAVING │ ORDER BY │ DISTINCT  │ JOIN <br>
-                                    <b>Statements: </b><br>
-                                    - CASE │ WHEN │ THEN
-                                </p>
+								<p></br>
+									<b>Step 1: Importing Libraries :</b><br>
+									In this step, you import the necessary Python libraries for data manipulation, machine learning, and evaluation.<br><br>
 
-                                <p>Data cleaning in SQL involves preparing and transforming raw data in a database to make it suitable for analysis, reporting, or other purposes. Here are some common data cleaning tasks you might perform using SQL :</p>
+									<b>Step 2: Loading the Dataset :</b><br>
+									You load a diabetes dataset into a Pandas DataFrame. The dataset is assumed to be located at the specified file path.<br><br>
 
-                                <p><b><u>1] CONVERTING DATA TYPES :</b></u><br>
-                                    - A query to alter the data type of the 'SaleDate' column in the 'housing' table from DATETIME to DATE.</br>
-                                    - This type of query is crucial when you need to standardize the data type for a particular column, ensuring that the values match the desired format for better consistency and accuracy in analysis.</p>
-								<section>                <!-- Script 1 -->
-									<div class="code-block">
-									<h4>--1]CONVERTING THE DATA TYPE IN 'SaleDate' COLUMN FROM DATETIME TO DATE.</h4>
-									<p></p>
-										<code>
-											<pre>
-	ALTER TABLE housing
-	ALTER COLUMN SaleDate DATE;
-											</pre>
-										</code>
-									</div>
-								</section><br><br>
+									<b>Step 3: Exploring the Dataset :</b><br>
+									This step involves examining the dataset to understand its structure and contents.<br>
+										- Displaying the first 5 rows of the dataset:<br>
+										<code>diabetes_data.head()</code><br>
+										- Checking the shape of the dataset :<br>
+										<code>diabetes_data.shape</code><br>
+										- Viewing the statistical values of the dataset :<br>
+										<code>diabetes_data.describe()</code><br>
+										- Counting the number of diabetic and non-diabetic patients :<br>
+										<code>diabetes_data['Outcome'].value_counts()</code><br>
+                                        - Mean values of the dataset grouped by the 'Outcome' column :<br>
+                                        <code>diabetes_data.groupby('Outcome').mean()</code><br><br>
+
+									<b>Step 4: Separating Data and Labels :</b><br>
+									You split the data into features (X) and the target variable (Y).<br><br>
+
+									<b>Step 5: Data Standardization :</b><br>
+									You standardize the feature data using 'StandardScaler' to ensure all features have the same scale.<br><br>
+									
+									<b>Step 6: Train-Test Split :</b><br>
+									You split the standardized data into training and testing sets.<br><br>
+
+									<b>Step 7: Training the Model : </b><br>
+									You train a Support Vector Machine (SVM) classifier with a linear kernel using the training data.<br><br>
 								
-				
-								<p><b><u>2] POPULATING THE NULL VALUE FIELDS :</b></u><br>
-									- This query identifies rows in the 'housing' table where 'PropertyAddress' is NULL, and there are multiple rows with the same 'ParcelID' but different 'UniqueID'. 
-									It showcases situations where there might be multiple records for the same property, but only some of them have missing addresses.</p>
-								<section>                <!-- Script 2 -->
-									<div class="code-block">
-									<h4>
-									--2]POPULATING PROPERTY ADDRESS DATA.<br>
-									--SHOWCASES ALL THE NULL ROWS WHICH HAS SAME 'ParcelID' BUT DIFFERENT 'UniqueID' BETWEEN THE TWO COLUMNS.
-									</h4>
-									<p></p>
-										<code>
-											<pre>
-	SELECT a.ParcelID, a.PropertyAddress, b.ParcelID, b.PropertyAddress
-	FROM housing AS a 
-	join 
-	housing AS b 
-	ON
-		a.ParcelID = b.ParcelID
-		and a.[UniqueID ] <> b.[UniqueID 
-	WHERE 
-		a.PropertyAddress IS NULL;
-											</pre>
-										</code>
-									</div>
-								</section><br>
+									<b>Step 8: Evaluating the Model : </b><br>
+									In this step, you evaluate the trained model's accuracy using both the training and testing data.<br>
+                                        - Accuracy score of the model on training data :<br>
+                                        <code>X_train_predict = classifier.predict(X_train)
+                                            training_data_accuracy = accuracy_score(X_train_predict, Y_train)</code><br>
+                                        - Accuracy score of the model on testing data :<br>
+                                        <code>X_test_predict = classifier.predict(X_test)
+                                            testing_data_accuracy = accuracy_score(X_test_predict, Y_test)</code><br><br>
+								
+									<b>Step 9: Prediction System :</b><br>
+									You create a simple system to make predictions based on user input.<br>
+                                        - Take user input as a comma-separated list of numbers and convert it to a standardized format :<br>
+                                        <code>  input_str = input("Enter a comma-separated list of numbers: ")<br>
+                                                input_list = input_str.split(',')<br>
+                                                input_data = [float(item) for item in input_list]<br>
+                                                input_data_np = np.asarray(input_data)<br>
+                                                input_data_reshaped = input_data_np.reshape(1, -1)<br>
+                                                standard_data = scaler.transform(input_data_reshaped)</code><br>
+                                        - Make predictions based on the input data :<br>
+                                        <code>  prediction = classifier.predict(standard_data)<br>
+                                                if prediction == 0:<br>
+                                                    print("Non-diabetic")<br>
+                                                else:<br>
+                                                    print("Diabetic")</code><br>
+                                        - The system predicts whether the input data represents a diabetic or non-diabetic patient.<br><br>
 
-                                <p>- This query updates the NULL 'PropertyAddress' values in the 'housing' table by using the non-NULL 'PropertyAddress' value from another row with the same 'ParcelID' but different 'UniqueID'. This way, you're essentially copying the address from another record for the same property.</p>
-								<section>                <!-- Script 3 -->
-									<div class="code-block">
-									<h4>--2]POPULATING PROPERTY ADDRESS DATA.<br>
-									--UPDATING THE NULL VALUES.</h4>
-									<p></p>
-										<code>
-											<pre>
-	UPDATE a
-	SET PropertyAddress = ISNULL(a.PropertyAddress,b.PropertyAddress)
-	FROM housing AS a 
-	join 
-	housing AS b
-	ON 
-		a.ParcelID = b.ParcelID
-		and a.[UniqueID ] <> b.[UniqueID ]
-	WHERE 
-		a.PropertyAddress is null;
-											</pre>
-										</code>
-									</div>
-								</section><br><br>								
+									<b>Step 10: Saving the Trained Model :</b><br>
+									In this step, we save the trained Support Vector Machine (SVM) classifier model using the pickle library for future use.<br>
+									<code>
+										import pickle<br>
+										file_name = 'trained_model.sav'<br>
+										pickle.dump(classifier, open(file_name, 'wb'))</code><br><br>
 
-                                <p><b><u>3] SPLITTING VALUES (PropertyAddress) :</b></u><br>
-                                    - This query demonstrates how to split the values in the 'PropertyAddress' column into 'Address' and 'City' parts using the SUBSTRING function along with CHARINDEX and LEN.<br></p>
-									<section>                <!-- Script 4 -->
-										<div class="code-block">
-										<h4>--3]SPLITTING THE VALUES IN 'PropertyAddress' INTO ADDRESS, CITY.<br>
-										----SHOWCASING THE SPLIT VALUES</h4>
+									<b>Step 11: Loading the Saved Model :</b><br>
+									After saving the model, we can later load it back into memory for making predictions without the need to retrain it. This step involves loading the saved model.<br>
+									<code>
+										loaded_model = pickle.load(open('trained_model.sav', 'rb'))
+									</code><br>
+									
+								</p><br>
+
+								<section>
+								<h2>Model Deployment</h2>
+								<p>Below is a Python script used in this project along with an explanation:</p>
+									<div class="code-block">
+										<h3>Script 1 : Model_Deploy.py</h3>
 										<p></p>
-											<code>
-												<pre>
-	SELECT  
-	SUBSTRING (PropertyAddress, 1, CHARINDEX(',', PropertyAddress) -1) AS Address,
-	SUBSTRING (PropertyAddress, CHARINDEX(',', PropertyAddress) +1, LEN(PropertyAddress)) AS City
-	FROM housing;
-												</pre>
-											</code>
-										</div>
-									</section><br>
-										
-
-                                <p>- These queries involve altering the 'housing' table by adding 'Prop_Address' and 'Prop_City' columns to store the split values. Then, the existing 'PropertyAddress' column is updated to fill the 'Prop_Address' column with the address part and the 'Prop_City' column with the city part.</p>
-                                <section>                <!-- Script 5 -->
-									<div class="code-block">
-									<h4>--3]SPLITTING THE VALUES IN 'PropertyAddress' INTO ADDRESS, CITY.<br>
-									----ADDING COLUMNS 'Address' & 'City' AND UPDATING THEM WITH THE SPLIT VALUES 
-									</h4>
-									<p></p>
 										<code>
 											<pre>
-	ALTER TABLE housing 
-	ADD
-		Prop_Address nvarchar(255);
-
-	UPDATE housing
-	SET
-		Prop_Address = SUBSTRING (PropertyAddress, 1, CHARINDEX(',', PropertyAddress) -1);
-
-
-	ALTER TABLE housing 
-	ADD
-		Prop_City nvarchar(255);
-
-	UPDATE housing
-	SET
-		Prop_City = SUBSTRING (PropertyAddress, CHARINDEX(',', PropertyAddress) +1, LEN(PropertyAddress));
+	import numpy as np
+	import pickle
+	import streamlit as st
+	
+	# Loading the saved model
+	loaded_model = pickle.load(open(r"C:\Users\farzan\Desktop\diabetes\trained_model.sav", 'rb'))
+	
+	def diabetes_func(input_data):
+	
+		# Changing the input data into numpy array
+		input_data_np = np.asarray(input_data)
+	
+		# reshaping the array
+		input_data_reshaped = input_data_np.reshape(1,-1)
+	
+		prediction = loaded_model.predict(input_data_reshaped)
+		print(prediction)
+	
+		if (prediction[0] == 0):
+			return 'No Diabetes Detected'
+		else:
+			return 'Diabetes Detected'
+			
+	def main():
+	
+		# Title
+		st.title('Diabetes Prediction')
+	
+		Pregnancies = st.text_input("Number of Pregnancies")
+		Glucose = st.text_input("Glucose Level")
+		BloodPressure = st.text_input("Blood Pressure Value")
+		SkinThickness = st.text_input("Skin Thickness")
+		Insulin = st.text_input("Insulin Level")
+		BMI = st.text_input("BMI")
+		DiabetesPedigreeFunction = st.text_input("Diabetes Pedigree Function Value")
+		Age = st.text_input("Age")
+	
+		diagnosis = ''
+	
+		if st.button("Test Results"):
+			diagnosis = diabetes_func([Pregnancies,Glucose,BloodPressure,SkinThickness,Insulin,BMI,DiabetesPedigreeFunction,Age])
+	
+		st.success(diagnosis)
+	
+	
+	if __name__ == '__main__':
+		main()
+												
 											</pre>
 										</code>
-									</div>
-								</section><br><br>
+									</div><br>
+								<p>
+									<b>Step 1: Imports :</b><br>
+									We import necessary libraries, including numpy for numerical operations, pickle for loading the saved model, and streamlit for building the web application.<br><br>
 
-                                <p><b><u>4] SPLITTING ADDRESS (OwnerAddress) :</b></u><br>
-                                    - This query demonstrates how to split the values in the 'OwnerAddress' column into 'Address', 'City', and 'State' parts using the PARSENAME function along with REPLACE. 
-                                    </p>
-									<section>                <!-- Script 6 -->
-										<div class="code-block">
-										<h4>--4]SPLITTING THE VALUES IN 'OwnerAddress' INTO ADDRESS, CITY, STATE.<br>
-											----SHOWCASING THE SPLIT VALUES.
-										</h4>
-										<p></p>
-											<code>
-												<pre>
-											SELECT 
-	PARSENAME(REPLACE(OwnerAddress,',','.'),3) AS Address,
-	PARSENAME(REPLACE(OwnerAddress,',','.'),2) AS City,
-	PARSENAME(REPLACE(OwnerAddress,',','.'),1) AS State
-	FROM housing;
-												</pre>
-											</code>
-										</div>
-									</section><br>
-                                
-								<p>- These queries involve altering the 'housing' table by adding 'Owner_Address', 'Owner_City', and 'Owner_State' columns to store the split values. Then, the existing 'OwnerAddress' column is updated to fill these new columns with the respective address, city, and state parts.</p>
-                                <section>                <!-- Script 7 -->
-									<div class="code-block">
-									<h4>--4]SPLITTING THE VALUES IN 'OwnerAddress' INTO ADDRESS, CITY, STATE.<br>
-										----ADDING COLUMNS 'Address', 'City' & 'State' AND UPDATING THEM WITH THE SPLIT VALUES.
-									</h4>
-									<p></p>
-										<code>
-											<pre>
-	ALTER TABLE housing 
-		ADD
-			Owner_Address nvarchar(255);
+									<b>Step 2: Loading the Saved Model :</b><br>
+									We load the pre-trained model using pickle.load. Ensure that the path to the 'trained_model.sav' file is correct on your system.<br><br>	
+									
+									<b>Step 3: "diabetes_func" Function :</b><br>
+									- This function takes an input list of data representing features related to diabetes prediction.<br>
+									- It converts the input data into a numpy array, reshapes it, and uses the loaded model to make predictions.<br>
+									- Based on the prediction result, it returns 'No Diabetes Detected' or 'Diabetes Detected'.<br><br>
 
-	ALTER TABLE housing 
-		ADD
-			Owner_City nvarchar(255);
+									<b>Step 4: "main" Function :</b><br>
+									- In the main function, we create a Streamlit web application.<br>
+									- We provide input fields for the user to enter information related to diabetes prediction, such as the number of pregnancies, glucose level, blood pressure, and so on.<br>
+									- When the user clicks the "Test Results" button, the <code>diabetes_func()</code> function is called with the provided input data, and the diagnosis is displayed.<br><br>
 
-	ALTER TABLE housing 
-		ADD
-			Owner_State nvarchar(255);
+									<b>Step 5: Running the Streamlit App :</b><br>
+									We use the <code>if __name__ == '__main__':</code> block to run the Streamlit app when the script is executed directly.<br><br>
 
-	UPDATE housing
-		SET
-			Owner_Address =PARSENAME(REPLACE(OwnerAddress,',','.'),3);
+									<b>Step 6: Displaying the Diagnosis :</b><br>
+									The diagnosis result ('No Diabetes Detected' or 'Diabetes Detected') is displayed using st.success.<br>
 
-	UPDATE housing
-		SET
-			Owner_City = PARSENAME(REPLACE(OwnerAddress,',','.'),2);
+								</p>
 
-	UPDATE housing
-		SET
-			Owner_State = PARSENAME(REPLACE(OwnerAddress,',','.'),1);	
-											</pre>
-										</code>
-									</div>
-								</section><br><br>
-                                
-								<p><b><u>5]  UPDATING ABBREVIATIONS :</b></u><br>
-                                    - This query demonstrates how to transform the 'Y' and 'N' values in the 'SoldAsVacant' column into 'Yes' and 'No', respectively, using a CASE expression.</p>
-									<section>                <!-- Script 8 -->
-										<div class="code-block">
-										<h4>--5]UPDATE THE 'Y' & 'N' VALUES IN THE COLUMN "SoldAsVacant" TO 'YES' AND 'NO'.<br>
-											----SHOWCASING THE 'Y' & 'N' AS 'Yes' & 'No'.
-										</h4>
-										<p></p>
-											<code>
-												<pre>
-	SELECT SoldAsVacant,
-		CASE 
-			WHEN SoldAsVacant = 'Y' THEN 'Yes'
-			WHEN SoldAsVacant = 'N' THEN 'No'
-			ELSE SoldAsVacant
-		END
-	FROM housing;
-												</pre>
-											</code>
-										</div>
-									</section><br>
+								<img src="images/ML_deploy/ml_d.png" alt="" class="responsive-image" /><br><br>
 
-                                <p>- This query involves updating the 'SoldAsVacant' values in the 'housing' table by using a CASE expression similar to the one shown in the first query. It changes 'Y' to 'Yes' and 'N' to 'No', leaving other values unchanged.</p>
-								<section>                <!-- Script 9 -->
-									<div class="code-block">
-									<h4>--5]UPDATE THE 'Y' & 'N' VALUES IN THE COLUMN "SoldAsVacant" TO 'YES' AND 'NO'.<br>
-										----UPDATING THE VALUES TO 'YES' & 'NO'.
-									</h4>
-									<p></p>
-										<code>
-											<pre>
-	UPDATE housing
-	SET SoldAsVacant = 
-		CASE 
-			WHEN SoldAsVacant = 'Y' THEN 'Yes'
-			WHEN SoldAsVacant = 'N' THEN 'No'
-			ELSE SoldAsVacant
-		END
-	FROM housing;
-											</pre>
-										</code>
-									</div>
-								</section><br><br>
 
-                                <p><b><u>6] REMOVING DUPLICATES :</b></u><br>
-                                    - This query identifies duplicate records in the 'housing' table based on the columns 'ParcelID', 'SaleDate', and 'LegalReference'. It counts the occurrences of each combination of these columns and showcases instances where there are multiple records with the same combination.</p>
-									<section>                <!-- Script 10 -->
-										<div class="code-block">
-										<h4>--6] REMOVING DUPLICATES.<br>
-											----SHOWCASING THE DUPLICATE VALUES.
-										</h4>
-										<p></p>
-											<code>
-												<pre>
-	SELECT ParcelID, SaleDate, LegalReference, COUNT(*) AS DuplicateCount
-	FROM housing
-	GROUP BY ParcelID, SaleDate, LegalReference
-	HAVING COUNT(*) > 1;
-												</pre>
-											</code>
-										</div>
-									</section><br>
-										
-                                <p>- This query involves removing duplicate records from the 'housing' table. It retains only the records with the minimum 'UniqueID' for each combination of 'ParcelID', 'SaleDate', and 'LegalReference'.</p>
-                                <section>                <!-- Script 11 -->
-									<div class="code-block">
-									<h4>--6] REMOVING DUPLICATES.<br>
-										----DELETING THE DUPLICATE VALUES.
-									</h4>
-									<p></p>
-										<code>
-											<pre>
-	DELETE FROM housing
-	WHERE [UniqueID ] NOT IN (
-		SELECT MIN([UniqueID ])
-		FROM housing
-		GROUP BY ParcelID, SaleDate, LegalReference
-	);
-											</pre>
-										</code>
-									</div>
-								</section><br><br>
+								</section>
 
-                                <p><b><u>7] REMOVING UNUSED COLUMNS :</b></u><br>
-                                    - This query is focused on deleting unused columns from the 'housing' table. The ALTER TABLE statement with the DROP COLUMN clause is used to remove specific columns from a table.</p>
-                                
-									<section>                <!-- Script 12 -->
-										<div class="code-block">
-										<h4>--7]DELETING UNUSED COLUMNS
-										</h4>
-										<p></p>
-											<code>
-												<pre>
-	ALTER TABLE housing
-	DROP COLUMN PropertyAddress,OwnerAddress,TaxDistrict;
-												</pre>
-											</code>
-										</div>
-									</section><br>
 
-                            </section>							
+							</section>							
 
 					</div>
 
@@ -350,8 +243,7 @@
 						<section class="split contact">
 							<section class="alt">
 								<h3>Address</h3>
-								<p>Goregaon East<br />
-								Mumbai 400063, MH IN</p>
+								<p>Mumbai 400063, MH IN</p>
 							</section>
 							<section>
 								<h3>Phone</h3>
@@ -386,12 +278,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
-			<script>
-				document.addEventListener("contextmenu", (event) => {
-				event.preventDefault();
-				});
-			</script>
+			<script src="assets/js/rightclick.js"></script>
 
 	</body>
 </html>
