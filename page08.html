@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Farzan's portfolio</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    </head>
+    <body class="is-preload">
+        <div id="wrapper" class="fade-in">
+            <header id="header"><a></a></header>
+            <nav id="nav">
+                <ul class="links">
+                    <li><a href="index2.html">❮ Go Back</a></li>
+                    <li class="active"><a>ML Project</a></li>
+                </ul>
+                <ul class="icons">
+                    <li>
+                        <a href="https://www.linkedin.com/in/farzan-bulsara/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/farzan2002" class="icon brands alt fa-github"><span class="label">GitHub</span></a>
+                    </li>
+                </ul>
+            </nav>
+            <div id="main">
+                <article class="post featured">
+                    <header class="major">
+                        <h2>
+                            <a href="https://github.com/farzan2002/Machine_Learning_Project/blob/main/Project_3%5D%20Rain_Prediction_Model.ipynb">ML Project - Rain Prediction Model (Python)<br /></a>
+                        </h2>
+                        <p>Developed a logistic regression model predicting tomorrow's rain with 85% accuracy, employing robust data preprocessing and evaluation techniques.</p>
+                    </header>
+                    <a class="image main"><img src="images/Preview_img/pic08.jpg" alt="" /></a>
+                    <ul class="actions special">
+                        <li><a href="https://github.com/farzan2002/Machine_Learning_Project/blob/main/Project%201%5D%20_Credit_Card_Fraud.ipynb" class="button large">Github Link</a></li>
+                    </ul>
+                </article>
+                <section>
+                    <h2>project explanation</h2>
+                    <style>
+                        iframe {
+                            height: 600px;
+                            width: 100%;
+                            overflow-x: auto;
+                            border: 2px solid #ccc;
+                        }
+                        @media (max-width: 768px) {
+                            iframe {
+                                height: 400px;
+                            }
+                        }
+                    </style>
+                    <iframe src="Source_Code\rain_sc.html"></iframe><br />
+                    <p>
+                        <br />
+                        Below is the explaination for the the Machine Learning Project shown above:
+                    </p>
+                    <p>
+                        <br />
+                        <b>Step 1: Importing Libraries :</b><br />
+                        We start by importing essential Python libraries for data analysis and machine learning, including NumPy, Pandas, Matplotlib, Seaborn, scikit-learn (sklearn).<br />
+                        <br />
+                        <b>Step 2: Loading the Dataset :</b><br />
+                        We load our weather dataset from a CSV file ('weather.csv') into a Pandas DataFrame called "weather_df".<br />
+                        <br />
+                        <b>Step 3: Dropping Unwanted Columns :</b><br />
+                        We remove specific columns from the DataFrame that are not needed for our analysis, such as 'date', 'cloud9am', and 'cloud3pm'.<br />
+                        <br />
+                        <b>Step 4: Checking Unique Values :</b><br />
+                        We check the unique values in various columns to understand the data.<br />
+                        <br />
+                        <b>Step 5: Checking Null Values :</b><br />
+                        We check for null values in each column of the DataFrame using the .isnull().sum() method and provide summary statistics using .describe().<br />
+                        <br />
+                        <b>Step 6: Removing "Blank" Values from the Data Frame :</b><br />
+                        We remove rows with 'Blank' values in certain columns, presumably to clean the dataset.<br />
+                        <br />
+                        <b>Step 7: Converting the Data Type of the Columns to Float :</b><br />
+                        We convert the data types of specific columns to float. The columns we convert are 'wind_speed9am', 'wind_speed3pm', 'humidity9am', 'humidity3pm', 'pressure9am', 'pressure3pm', 'temp9am', and 'temp3pm'.<br />
+                        <br />
+                        <b>Step 8: Replacing the Null Values with Mean of the Columns :</b><br />
+                        We replace null values in certain columns with the mean of those columns, presumably to handle missing data.<br />
+                        <br />
+                        <b>Step 9: Replacing "Yes" and "No" with "1" and "0" Respectively :</b><br />
+                        We replace "Yes" and "No" values in the 'rain_today' and 'rain_tomorrow' columns with '1' and '0', respectively. This is likely to prepare the target variable for binary classification (1 for rain, 0 for no rain).
+                        <br />
+                        <br />
+                        <b>Step 10: Standard Scaling :</b><br />
+                        We standardize the feature data using the StandardScaler from scikit-learn. This step scales the data to have zero mean and unit variance, which is often important for machine learning algorithms.<br />
+                        <br />
+                        <b>Step 11: Splitting the Data into X and Y :</b><br />
+                        We split the data into the feature matrix x (all columns except the target) and the target vector y (the 'rain_tomorrow' column).<br />
+                        <br />
+                        <b>Step 12: Training the Logistic Regression Model :</b><br />
+                        We create a logistic regression model (logmodel) and train it using the training data (X_train and Y_train) using the .fit() method.<br />
+                        <br />
+                        <b>Step 13: Evaluating Model Performance :</b><br />
+                        We calculate the accuracy score of the model using both the training data and testing data with the accuracy_score function. These scores indicate how well the model performs on the given data.<br />
+                        <br />
+                        <b>Step 14: Checking the Accuracy :</b><br />
+                        We use classification_report from scikit-learn to provide a detailed classification report, including precision, recall, F1-score, and support for the testing data. This helps assess the model's performance in more
+                        detail.<br />
+                        <br />
+                    </p>
+                </section>
+            </div>
+            <footer id="footer">
+                <section class="split contact">
+                    <section class="alt">
+                        <h3>Address</h3>
+                        <p>Mumbai 400063, MH IN<br /></p>
+                    </section>
+                    <section>
+                        <h3>Phone</h3>
+                        <p><a>+91 8104699848</a></p>
+                    </section>
+                    <section>
+                        <h3>Email</h3>
+                        <p><a href="https://mail.google.com">farzanb102@gmail.com</a></p>
+                    </section>
+                    <section>
+                        <h3>Social</h3>
+                        <ul class="icons alt">
+                            <li>
+                                <a href="https://www.linkedin.com/in/farzan-bulsara/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/farzan2002" class="icon brands alt fa-github"><span class="label">GitHub</span></a>
+                            </li>
+                        </ul>
+                    </section>
+                </section>
+            </footer>
+            <div id="copyright">
+                <ul>
+                    <li></li>
+                    <li><a></a></li>
+                </ul>
+            </div>
+        </div>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrollex.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script src="assets/js/rightclick.js"></script>
+        
+    </body>
+</html>

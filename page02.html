@@ -1,0 +1,239 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Farzan's portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/styles.css"> <!-- Link to external CSS file -->
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Header -->
+					<header id="header">
+						<a></a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li ><a href="index.html">❮ Go Back</a></li>
+							<li class="active"><a>ML Project</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/farzan-bulsara/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://github.com/farzan2002" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Featured Post -->
+							<article class="post featured">
+								<header class="major">
+									<h2><a href="https://github.com/farzan2002/Machine_Learning_Project/blob/main/Project%201%5D%20_Credit_Card_Fraud.ipynb">ML Project - Customer Churn Prediction (Python)<br />
+									</a></h2>
+									<p>Using SMOTE and hyperparameter-tuned Random Forest, this project predicts customer churn with 84% accuracy, offering insights to improve retention.</p>
+								</header>
+								<a class="image main"><img src="images/Preview_img/pic02.jpg" alt="" /></a>
+								<ul class="actions special">
+									<li><a href="https://github.com/farzan2002/Machine_Learning_Project/blob/main/Project%201%5D%20_Credit_Card_Fraud.ipynb" class="button large">Github Link</a></li>
+								</ul>
+							</article>
+
+                            <section>
+                                <h2>project explanation</h2>
+								<style>
+									/* Default styles for the iframe */
+									iframe {
+									  height: 600px; /* Set a fixed height */
+									  width: 100%;  /* Take up the full available width */
+									  overflow-x: auto; /* Add horizontal scroll when content overflows */
+									  border: 2px solid #ccc;
+									}
+								  
+									/* Apply different styles for smaller screens */
+									@media (max-width: 768px) {
+									  iframe {
+										height: 400px; /* Adjust the height for smaller screens */
+									  }
+									}
+								  </style>
+								  
+								  <iframe src="Source_Code\churn_sc.html"></iframe>
+								</br>
+								<p></br>
+									Below is the explaination for the the Machine Learning Project shown above:
+								</p>
+
+								<p></br>
+									<b>Step 1: Importing Libraries :</b><br>
+									In this step, the necessary Python libraries for data analysis, visualization, and machine learning are imported. This includes libraries for data manipulation (Pandas, NumPy), visualization (Matplotlib, Seaborn, Plotly), and machine learning (scikit-learn, imbalanced-learn).<br><br>
+
+									<b>Step 2: Loading & Exploring the Dataset :</b><br>
+									We load a Customer Churn dataset into a Pandas DataFrame. The dataset is assumed to be located at the specified file path.<br><br>
+
+									<b>Step 3: Exploring the Dataset :</b><br>
+									This step involves examining the dataset to understand its structure and contents.<br>
+										- Displaying the first 5 rows of the dataset:<br>
+										<code>Customer_dataset.head(5)</code><br><br>
+										- Getting information about the dataset, including data types and null values:<br>
+										<code>Customer_dataset.info()</code><br><br>
+										- Printing the Number of Rows & Columns of the DataFrame:<br>
+										<code>Customer_dataset.shape</code><br><br>
+										- Printing the Statistical Values of the DataFrame:<br>
+										<code>Customer_dataset.describe()</code><br><br>
+									
+                                    <b>Step 4: Data Cleaning & Preparation :</b><br>
+                                        - Dropping Irrelevant Columns:<br>
+                                        <code>mod_customer_dataset = customer_dataset.drop(columns=['RowNumber', 'CustomerId', 'Surname'])</code><br><br>
+                                        - Checking for Missing Values:<br>
+                                        <code>mod_customer_dataset.isnull().sum()</code><br><br>
+                                        - Identifying Rows with Missing Data:<br>
+                                        <code>missing_data_rows = mod_customer_dataset[mod_customer_dataset.isnull().any(axis=1)]</code><br><br>
+                                        - Dropping Rows with Missing Values:<br>
+                                        <code>mod_customer_dataset.dropna(inplace=True)</code><br><br>
+                                        - Analyzing Customer Exit Distribution:<br>
+                                        <code>mod_customer_dataset.groupby('Exited').size()</code><br><br>
+
+									<b>Step 5: Data Visualization :</b><br>
+									We use Plotly Express to create various plots to explore the relationships between various features and customer churn:<br><br>
+                                        - <b>Age</b>: The distribution shows a right-skewed pattern, indicating that most customers are aged between 30-40.<br>
+                                        <a class="image main"><img src="images\Churn_plots\plot1.jpg" alt="" /></a>
+                                        - <b>Balance</b>: Most churned customers have low or zero balances, while non-churned customers tend to have balances between 50k and 150k.<br>
+                                        <a class="image main"><img src="images\Churn_plots\plot2.jpg" alt="" /></a>
+                                        - <b>Credit Score</b>: Customers with lower credit scores are more likely to churn, especially those below 650.<br>
+                                        <a class="image main"><img src="images\Churn_plots\plot3.jpg" alt="" /></a>
+                                        - <b>Estimated Salary</b>: The analysis shows that estimated salary does not significantly influence churn rates.<br>
+                                        <a class="image main"><img src="images\Churn_plots\plot4.jpg" alt="" /></a>
+                                        - <b>Gender</b>: The visual shows a higher count of female customers who did not churn, while male churn rates are lower in proportion.<br>
+                                        <a class="image main"><img src="images\Churn_plots\plot5.jpg" alt="" /></a>
+                                        - <b>Number of Products</b>: Fewer products correlate with higher churn rates, indicating that customers with more products are less likely to leave.<br>
+                                        <a class="image main"><img src="images\Churn_plots\plot6.jpg" alt="" /></a>
+                                        - <b>Credit Card Ownership</b>: The data suggests that simply having a credit card does not guarantee customer retention.<br>
+                                        <a class="image main"><img src="images\Churn_plots\plot7.jpg" alt="" /></a>
+                                        - <b>Correlation Analysis</b>: A correlation matrix is plotted to visualize the relationships between features, helping to identify which features have significant correlations with customer churn.<br>
+                                        <a class="image main"><img src="images\Churn_plots\plot8.jpg" alt="" /></a><br><br>
+									
+									<b>Step 6: Splitting the Data into Features and Targets :</b><br>
+									We separate the features (X) and the target variable (y) from the dataset. The features are the input variables used to predict the target variable, which is the Exited status in this case.<br><br>
+
+									<b>Step 7: Splitting the Data into Training and Testing Sets : </b><br>
+									We split the data into training and testing sets using the using the <code>train_test_split()</code> function. This allows us to train the machine learning model on a portion of the data and evaluate its performance on unseen data.<br><br>
+								
+									<b>Step 8: Feature Importance using Random Forest Classifier : </b><br>
+									A Random Forest Classifier is employed to evaluate the importance of features. The model is trained on the training set, and the importance of each feature is printed.<br><br>
+								
+									<b>Step 9: Handling Imbalanced Data :</b><br>
+									The technique explored to address class imbalance is:<br>
+                                    - <b>SMOTE (Synthetic Minority Oversampling Technique)</b>: SMOTE (Synthetic Minority Over-sampling Technique) is a data augmentation technique used to address class imbalance in datasets. It works by generating synthetic samples for the minority class, helping machine learning models better generalize and improve performance on imbalanced datasets.<br>
+									It balances the classes by oversampling the minority class.<br><br>
+								
+									<b>Step 10: Model Training and Evaluation :</b><br>
+									A Random Forest Classifier is trained on the balanced dataset. Predictions are made on the test set, and evaluation metrics, including the classification report and confusion matrix, are generated to assess the model’s performance.<br><br>
+									
+									<b>Step 11: Results Summary :</b><br>
+									Achieved a precision of <span style="background-color: rgb(120, 233, 55)">0.60</span> and recall of <span style="background-color: rgb(120, 233, 55)">0.63</span>, with an overall accuracy of <span style="background-color: rgb(120, 233, 55)">84%</span>.<br>
+
+                                    <div style="margin-left: 20px;">
+                                        <b>Best Parameters Found</b>:<br>
+                                        - <code>class_weight: balanced</code> <span style="color: rgb(80, 130, 51)"># Class weight is set to 'balanced' to handle class imbalance in the dataset.</span><br>
+                                        - <code>max_depth: 30</code> <span style="color: rgb(80, 130, 51)"># Maximum depth of the tree is set to 30 to control overfitting while allowing complex decision boundaries.</span><br>
+                                        - <code>max_features: sqrt</code> <span style="color: rgb(80, 130, 51)"># Maximum features to consider when looking for the best split is set to 'sqrt' for efficiency and reduced correlation.</span><br>
+                                        - <code>min_samples_leaf: 1</code> <span style="color: rgb(80, 130, 51)"># Minimum samples required to be at a leaf node is set to 1, allowing the model to capture all training examples.</span><br>
+                                        - <code>min_samples_split: 2</code> <span style="color: rgb(80, 130, 51)"># Minimum samples required to split an internal node is set to 2, ensuring that nodes have enough data to make splits.</span><br>
+                                        - <code>n_estimators: 300</code> <span style="color: rgb(80, 130, 51)"># Number of trees in the forest is set to 300 to improve model stability and accuracy through averaging.</span><br><br>
+                                        <b>Best F1 Score Found</b>: <code>0.85698</code><br>
+                                    </div><br>
+
+                                    After determining the optimal parameters, the model is retrained using these settings.<br><br>
+
+                                    <b>Step 13: Model Evaluation with Best Parameters :</b><br>
+									Using the best parameters identified from the grid search, the model's performance is re-evaluated on the test set.<br>
+                                    1] <b>Predictions on the Test Set</b>:<br>
+                                    The best model from the grid search is used to make predictions on the test set. The F1 score is calculated to assess the model's performance on unseen data.<br>
+                                    <code># Best model from Grid Search<br>
+                                        best_model = grid_search.best_estimator_<br><br>
+                                        
+                                        # Make predictions on the test set<br>
+                                        y_pred = best_model.predict(X_test)<br><br>
+                                        
+                                        # Evaluate the model on the test set (without cross-validation)<br>
+                                        f1 = f1_score(y_test, y_pred)<br>
+                                        print("F1 score on test set:", f1)<br>
+                                        </code><br>
+
+                                    2] <b>Cross-Validation Evaluation</b>:
+                                    To further validate the model's performance, cross-validation is conducted on the training set using the balanced dataset. The F1 scores from the cross-validation process are averaged to provide a more robust estimate of the model's effectiveness.<br>
+                                    <code># Evaluate the model using cross-validation<br>
+                                        cv_scores = cross_val_score(best_model, X_train_balanced, y_train_balanced, cv=5, scoring='f1')<br>
+                                        print("Cross-validated F1 scores:", cv_scores)<br>
+                                        print("Mean F1 score:", cv_scores.mean())
+                                        </code><br><br>
+
+                                    3] <b>Results Summary</b>:<br>
+                                    The evaluation yielded the following results:<br>
+                                    <div style="margin-left: 20px;">
+                                    <b>F1 Score on Test Set</b>: <code>0.6042983565107459</code><br>
+                                    <b>Cross-validated F1 Scores</b>: <code>[0.68909178 0.86974275 0.90936902 0.90867052 0.90805036]</code><br>
+                                    <b>Mean F1 Score</b>: <code>0.8569848884970706</code>
+                                    </div><br>
+
+                                    <b>Step 12: Conclusion :</b><br>
+									This project successfully predicts customer churn using a Random Forest classifier. The analysis demonstrated the effectiveness of using SMOTE (Synthetic Minority Oversampling Technique) to address class imbalance in the dataset.<br>
+                                    Following the implementation of hyperparameter tuning via GridSearchCV, the best parameters were identified and utilized to refine the model. Despite these enhancements, the overall metrics, including the F1 score, did not show significant improvements over the baseline model.
+                                    <br><br>
+							</section>							
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section class="split contact">
+							<section class="alt">
+								<h3>Address</h3>
+								<p>Mumbai 400063, MH IN</p>
+							</section>
+							<section>
+								<h3>Phone</h3>
+								<p><a>+91 8104699848</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="https://mail.google.com">farzanb102@gmail.com</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="https://www.linkedin.com/in/farzan-bulsara/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://github.com/farzan2002" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li></li><li> <a> </a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/rightclick.js"></script>
+
+
+	</body>
+</html>
